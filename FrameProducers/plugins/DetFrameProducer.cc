@@ -117,7 +117,6 @@ DetFrameProducer::produce(edm::Event& iEvent, const edm::EventSetup& iSetup)
    	//iEvent.put(std::move(HBHEenergyEB_edm),"HBHEenergyEB");
 	vDetFrames.push_back(vHBHE_energy_reshaped);
    }
-   std::cout<<doHBHEenergy<<" "<<vDetFrames.size()<<" "<<vDetFrames[0].size()<<" "<<vDetFrames[0][0].size()<<std::endl;
    
    if (doECALstitched){
 	vChannelMap[1] = 1;
@@ -131,7 +130,6 @@ DetFrameProducer::produce(edm::Event& iEvent, const edm::EventSetup& iSetup)
    	//iEvent.put(std::move(ECALstitched_energy_edm), "ECALstitchedenergy");
    	vDetFrames.push_back(vECAL_energy_reshaped);
    }
-   std::cout<<doECALstitched<<" "<<vDetFrames.size()<<" "<<vDetFrames[0].size()<<" "<<vDetFrames[0][0].size()<<std::endl;
 
    if (doTracksAtECALstitchedPt){
    	vChannelMap[2] = 1;
@@ -151,7 +149,6 @@ DetFrameProducer::produce(edm::Event& iEvent, const edm::EventSetup& iSetup)
         vDetFrames.push_back(vECAL_tracksd0_PV_reshaped);
         vDetFrames.push_back(vECAL_tracksdz_PV_reshaped);
    }
-   std::cout<<doTracksAtECALstitchedPt<<" "<<vDetFrames.size()<<" "<<vDetFrames[0].size()<<" "<<vDetFrames[0][0].size()<<std::endl;
 
    if (doTracksAtECALadjPt){
    	vChannelMap[5] = 1;
@@ -179,7 +176,6 @@ DetFrameProducer::produce(edm::Event& iEvent, const edm::EventSetup& iSetup)
    	//iEvent.put(std::move(TracksECALadjPt_max_edm),"TracksAtECALadjPtMax");
    	vDetFrames.push_back(vECALadj_tracksPt_reshaped);
    }
-   std::cout<<doTracksAtECALadjPt<<" "<<vDetFrames.size()<<" "<<vDetFrames[0].size()<<" "<<vDetFrames[0][0].size()<<std::endl;   
 
    if (doBPIX){
 	vChannelMap[6] = 1;
@@ -201,7 +197,6 @@ DetFrameProducer::produce(edm::Event& iEvent, const edm::EventSetup& iSetup)
 	vDetFrames.push_back(vBPIX3_ECAL_reshaped);
 	std::cout<<" >> Number of BPIX channels: "<<sizeof(vBPIX_ECAL_)/sizeof(vBPIX_ECAL_[0])<<" and Size of each BPIX channel: "<<vBPIX_ECAL_[0][0].size()<<std::endl; 
    } 
-   std::cout<<doBPIX<<" "<<vDetFrames.size()<<" "<<vDetFrames[0].size()<<" "<<vDetFrames[0][0].size()<<std::endl;	
    std::unique_ptr<e2e::Frame3D> vDetFrames_edm (new e2e::Frame3D(vDetFrames));
    iEvent.put(std::move(vDetFrames_edm), "DetFrames");
 
